@@ -21,12 +21,12 @@ class HomepageBloc extends Bloc<HomepageEvent, HomepageState> {
       emit(state.copyWith(isLoading: true, hasError: false));
 
       //get data
-      final _movieResult = await _homeService.getHotAndNewMovieData();
-      final _tvResult = await _homeService.getHotAndNewTvData();
+      final movieResult = await _homeService.getHotAndNewMovieData();
+      final tvResult = await _homeService.getHotAndNewTvData();
 
       //transform data to state
 
-      final _state1 = _movieResult.fold((MainFailure failure) {
+      final state1 = movieResult.fold((MainFailure failure) {
         return HomepageState(
             stateId: DateTime.now().millisecondsSinceEpoch.toString(),
             pastYearMovieList: [],
@@ -56,9 +56,9 @@ class HomepageBloc extends Bloc<HomepageEvent, HomepageState> {
             isLoading: false,
             hasError: false);
       });
-      emit(_state1);
+      emit(state1);
 
-      final _state2 = _tvResult.fold((MainFailure failure) {
+      final state2 = tvResult.fold((MainFailure failure) {
         return HomepageState(
             stateId: DateTime.now().millisecondsSinceEpoch.toString(),
             pastYearMovieList: [],
@@ -82,7 +82,7 @@ class HomepageBloc extends Bloc<HomepageEvent, HomepageState> {
       });
 
       //send data to ui
-      emit(_state2);
+      emit(state2);
     });
   }
 }

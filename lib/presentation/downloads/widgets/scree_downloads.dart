@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable
+
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -12,7 +14,7 @@ class ScreenDownload extends StatelessWidget {
 
   final _widgetList = [
     const smartdownloads(),
-    Section2(),
+    const Section2(),
     const Section3(),
   ];
   @override
@@ -28,7 +30,7 @@ class ScreenDownload extends StatelessWidget {
         ),
       ),
       body: ListView.separated(
-          padding: EdgeInsets.all(7),
+          padding: const EdgeInsets.all(7),
           itemCount: _widgetList.length,
           separatorBuilder: (context, index) => const SizedBox(height: 10),
           itemBuilder: (context, index) => _widgetList[index]),
@@ -37,7 +39,7 @@ class ScreenDownload extends StatelessWidget {
 }
 
 class Section2 extends StatelessWidget {
-  Section2({Key? key}) : super(key: key);
+  const Section2({Key? key}) : super(key: key);
   // final List movieposter = [
   //   'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/vNVFt6dtcqnI7hqa6LFBUibuFiw.jpg',
   //   "https://www.themoviedb.org/t/p/w600_and_h900_bestv2/jqPGGx9XhFjLjb96ZbQ6eoMB4n2.jpg",
